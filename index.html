@@ -41,10 +41,19 @@
                             <input type="text" placeholder="E.g., Mysore" required>
                         </div>
                         <div class="form-group">
+                            <label>Vehicle Type</label>
+                            <select required>
+                                <option value="">Select Vehicle Type</option>
+                                <option value="Sedan">Sedan</option>
+                                <option value="SUV">SUV</option>
+                                <option value="Tempo Traveller">Tempo Traveller</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Your Phone Number</label>
                             <input type="tel" placeholder="10-digit mobile number" required>
                         </div>
-                        <button type="submit" class="btn-submit">Request Call Back</button>
+                        <button type="submit" class="btn-submit">Submit</button>
                     </form>
                 </div>
             </div>
@@ -65,8 +74,10 @@ document.addEventListener('DOMContentLoaded', function(){
     form.addEventListener('submit', function(e){
         e.preventDefault();
         const inputs = form.querySelectorAll('input');
+        const selects = form.querySelectorAll('select');
         const pickup = inputs[0].value.trim();
         const destination = inputs[1].value.trim();
+        const vehicleType = selects[0].value.trim();
         const caller = inputs[2].value.trim();
 
         const phoneTarget = '+918147197853';
@@ -75,27 +86,21 @@ document.addEventListener('DOMContentLoaded', function(){
             'New booking request from website',
             'Pickup: ' + pickup,
             'Destination: ' + destination,
+            'Vehicle Type: ' + vehicleType,
             'Customer phone: ' + caller,
             'Send time: ' + new Date().toLocaleString()
         ];
         const body = bodyLines.join('\n');
 
+        // Show success dialog
+        alert('We will contact you shortly');
+
         // Open WhatsApp (web or app)
         const waUrl = 'https://wa.me/' + phoneTarget.replace(/[^0-9]/g,'') + '?text=' + encodeURIComponent(body);
         window.open(waUrl, '_blank');
 
-        // Give quick feedback to user
-        const btn = form.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
-        btn.textContent = 'Opening WhatsApp...';
-        setTimeout(()=>{ btn.textContent = originalText; }, 3000);
-    });
-});
-</script>
-        const origText = btn.textContent;
-        btn.textContent = 'Request Sent';
-        btn.disabled = true;
-        setTimeout(()=>{ btn.textContent = origText; btn.disabled = false; form.reset(); }, 3000);
+        // Reset form
+        form.reset();
     });
 });
 </script>
