@@ -24,12 +24,13 @@ ul { list-style: none; }
 
 /* --- NAVIGATION --- */
 header {
-    background: var(--dark-color);
+    background: linear-gradient(135deg, var(--dark-color) 0%, #1a1a1a 100%);
     color: #fff;
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
 .container {
@@ -42,11 +43,29 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 }
 
-.logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); }
+.logo { 
+    font-size: 1.6rem; 
+    font-weight: 900; 
+    color: var(--primary-color); 
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+}
 
-.nav-links { display: flex; gap: 20px; }
+.nav-links { 
+    display: flex; 
+    gap: 20px; 
+    flex: 1;
+}
+
+.nav-links a {
+    color: #fff;
+    padding: 8px 4px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
 
 .nav-links a:hover, .nav-links a.active {
     color: var(--primary-color);
@@ -172,13 +191,37 @@ footer {
 @media(max-width: 768px) {
     body { font-size: 16px; }
     
-    header { padding: 0.8rem 0; }
-    .nav-container { flex-wrap: wrap; gap: 8px; }
-    .logo { font-size: 1.3rem; }
-    .nav-links { flex-wrap: wrap; gap: 12px; font-size: 0.95rem; }
-    .nav-links a { padding: 6px 10px; display: inline-block; border-radius: 4px; transition: 0.2s; }
-    .nav-links a:hover, .nav-links a.active { background: var(--primary-color); color: var(--dark-color); border: none; }
-    .btn-call { padding: 10px 14px; font-size: 0.9rem; }
+    header { padding: 0.9rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .nav-container { flex-wrap: wrap; gap: 6px; }
+    .logo { font-size: 1.4rem; font-weight: 900; }
+    .nav-links { 
+        flex: 1;
+        flex-wrap: wrap; 
+        gap: 8px; 
+        font-size: 0.85rem; 
+        order: 3;
+        width: 100%;
+    }
+    .nav-links a { 
+        padding: 8px 10px; 
+        display: inline-block; 
+        border-radius: 5px; 
+        background: rgba(255,255,255,0.1);
+        border: none;
+        transition: all 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { 
+        background: var(--primary-color); 
+        color: var(--dark-color);
+        border: none;
+        transform: scale(1.05);
+    }
+    .btn-call { 
+        padding: 10px 12px; 
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        order: 2;
+    }
     
     .hero { height: 60vh; padding: 40px 20px; }
     .hero-content h1 { font-size: 1.8rem; margin-bottom: 15px; }
