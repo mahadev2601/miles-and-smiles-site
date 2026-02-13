@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function(){
         const caller = inputs[2].value.trim();
 
         const phoneTarget = '+918147197853';
-        const emailTarget = 'mahadevalakshmanan@gmail.com';
 
         const bodyLines = [
             'New booking request from website',
@@ -81,23 +80,18 @@ document.addEventListener('DOMContentLoaded', function(){
         ];
         const body = bodyLines.join('\n');
 
-        // Open mailto
-        const mailto = 'mailto:' + encodeURIComponent(emailTarget)
-                                 + '?subject=' + encodeURIComponent('New booking request')
-                                 + '&body=' + encodeURIComponent(body);
-        window.open(mailto, '_blank');
-
         // Open WhatsApp (web or app)
         const waUrl = 'https://wa.me/' + phoneTarget.replace(/[^0-9]/g,'') + '?text=' + encodeURIComponent(body);
         window.open(waUrl, '_blank');
 
-        // Try SMS (mobile will open SMS app)
-        const smsUrl = 'sms:' + phoneTarget + '?body=' + encodeURIComponent(body);
-        // Use location change for sms on some mobile browsers
-        try { window.open(smsUrl, '_blank'); } catch(err) { window.location.href = smsUrl; }
-
         // Give quick feedback to user
         const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
+        btn.textContent = 'Opening WhatsApp...';
+        setTimeout(()=>{ btn.textContent = originalText; }, 3000);
+    });
+});
+</script>
         const origText = btn.textContent;
         btn.textContent = 'Request Sent';
         btn.disabled = true;
