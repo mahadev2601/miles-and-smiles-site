@@ -145,5 +145,7 @@ footer {
 @media(max-width: 768px) {
     .hero { height: auto; padding: 100px 20px; }
     .hero-content h1 { font-size: 2rem; }
-    .nav-links { display: none; } /* Hide menu on mobile for simplicity */
+    .nav-links { flex-wrap: wrap; gap: 10px; font-size: 0.9rem; }
+    .btn-call { padding: 6px 10px; font-size: 0.85rem; }
+    .logo { font-size: 1.2rem; }
 }
