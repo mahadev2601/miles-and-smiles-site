@@ -1,0 +1,16 @@
+# Ignore common system files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+
+# Python cache
+__pycache__/
+*.py[cod]
