@@ -223,7 +223,11 @@ footer {
         order: 2;
     }
     
-    .hero { height: 60vh; padding: 40px 20px; }
+    .hero { 
+        height: 70vh; 
+        padding: 40px 20px;
+        padding-top: 100px;
+    }
     .hero-content h1 { font-size: 1.8rem; margin-bottom: 15px; }
     .hero-content p { font-size: 1rem; margin-bottom: 20px; }
     
